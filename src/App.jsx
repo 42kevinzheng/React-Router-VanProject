@@ -9,14 +9,14 @@ import {
 import Home from './pages/Home'
 import About from './pages/About'
 import Vans, {loader as vansLoader }from './pages/Vans'
-import VanDetails from './pages/VanDetails'
+import VanDetails, {loader as VanDetailsLoader} from './pages/VanDetails'
 import Layout from './components/Layout'
 import Dashboard from './Host/Dashboard'
 import Reviews from './Host/Reviews'
 import Income from './Host/Income'
 import HostLayout from './components/HostLayout'
-import HostVans from './Host/HostVans'
-import HostVanDetail from './pages/HostVanDetail'
+import HostVans, {loader as hostVanLoader} from './Host/HostVans'
+import HostVanDetail, {loader as HostVanDetailLoader} from './pages/HostVanDetail'
 import HostVanInfo from './Host/HostVanInfo'
 import HostVanPricing from './Host/HostVanPricing'
 import HostVanPhotos from './Host/HostVanPhotos'
@@ -34,16 +34,16 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route index element={<Home/>}/>
             <Route path="about" element={<About/>}/>
             <Route path="login" element={<Login />}/>
-            <Route path="vans" element={<Vans/>} loader= {vansLoader }  errorElement={<Error />} />
-            <Route path="vans/:id" element={<VanDetails/>}/>
+            <Route path="vans" element={<Vans/>} loader= {vansLoader}  errorElement={<Error />} />
+            <Route path="vans/:id" element={<VanDetails/>} loader={VanDetailsLoader}/>
 
-            <Route path="host" element={<HostLayout />}>
+            <Route path="host" element={<HostLayout />} >
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />
               <Route path="reviews" element={<Reviews />} />
-              <Route path="vans" element={<HostVans />} />
+              <Route path="vans" element={<HostVans />} loader={hostVanLoader}/>
 
-              <Route path="vans/:id" element={<HostVanDetail />}>
+              <Route path="vans/:id" element={<HostVanDetail />} loader={HostVanDetailLoader}>
                 <Route index element={<HostVanInfo />} />
                 <Route path="pricing" element={<HostVanPricing />} />
                 <Route path="photos" element={<HostVanPhotos />} />
