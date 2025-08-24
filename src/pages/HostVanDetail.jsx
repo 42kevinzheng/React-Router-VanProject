@@ -9,8 +9,7 @@ export async function loader({params}){
 }
 
 export default function HostVanDetail() {
-    const data = useLoaderData();
-    const currentVan = data[0]
+    const currentVan = useLoaderData();
       const activeStyles = {
         fontWeight: "bold",
         textDecoration: "underline",
